@@ -1,10 +1,20 @@
 class Object
   def self.do_not_want!(method_name, reason)
+    begin
+      original_method = instance_method(method_name)
+    rescue NameError
+      original_method = nil
+    end
+
     @@do_not_want_original_methods ||= {}
-    @@do_not_want_original_methods[method_name] = instance_method(method_name)
-    self.send :define_method, method_name do
-      if DoNotWant.should_ignore_caller(caller)
-        return @@do_not_want_original_methods[method_name].bind(self).call
+    @@do_not_want_original_methods[method_name] = original_method
+
+    self.send :define_method, method_name do |*args|
+      original_method = @@do_not_want_original_methods[method_name]
+      use_real_method = (original_method &&
+                         DoNotWant.should_validate_for_caller(caller))
+      if use_real_method
+        return original_method.bind(self).call(*args)
       end
       raise DoNotWant::NotSafe.new(self.class, method_name, reason)
     end
@@ -31,7 +41,7 @@ module DoNotWant
     end
   end
 
-  def self.should_ignore_caller(caller)
+  def self.should_validate_for_caller(caller)
     /\/gems\//.match(caller[0])
   end
 end

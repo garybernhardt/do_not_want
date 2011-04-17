@@ -1,4 +1,4 @@
-def call_activerecord_update_attribute
-  ActiveRecord::Base.new.update_attribute
+def kill_walrus(walrus)
+  walrus.be_killed_by!('kitty')
 end
 
