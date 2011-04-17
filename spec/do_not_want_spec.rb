@@ -1,17 +1,10 @@
-module ActiveRecord
-  class Base
-    def update_attribute; end
-    def save; end
-  end
-end
-
 require 'do_not_want'
 require 'gems/fake_gem'
 
 class Walrus
-  def be_killed_by!(killer)
+  def be_killed_by!(killer, reason)
     die!
-    "killed by #{killer}"
+    "killed by #{killer} because #{reason}"
   end
 
   def die!
@@ -40,6 +33,10 @@ describe 'do not want' do
       expect do
         kill_walrus(walrus)
       end.not_to raise_error
+    end
+
+    it "passes arguments" do
+      kill_walrus(walrus).should == 'killed by kitty because kitty is angry'
     end
   end
 end
