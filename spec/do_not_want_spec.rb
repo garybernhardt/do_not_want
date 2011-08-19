@@ -69,9 +69,7 @@ describe 'rails integration' do
 
   it 'rejects unsafe class methods' do
     DoNotWant::RAILS_CLASS_METHODS_THAT_SKIP_VALIDATION.each do |method_name|
-      expect do
-        Cheese.send method_name
-      end.to raise_error DoNotWant::NotSafe
+      expect { Cheese.send method_name }.to raise_error DoNotWant::NotSafe
     end
   end
 
