@@ -66,5 +66,17 @@ describe 'rails integration' do
   it 'allows safe instance methods' do
     cheese.reload
   end
+
+  it 'rejects unsafe class methods' do
+    DoNotWant::RAILS_CLASS_METHODS_THAT_SKIP_VALIDATION.each do |method_name|
+      expect do
+        Cheese.send method_name
+      end.to raise_error DoNotWant::NotSafe
+    end
+  end
+
+  it 'allows safe class methods' do
+    Cheese.columns.count.should == 2
+  end
 end
 

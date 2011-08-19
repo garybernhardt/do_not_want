@@ -46,8 +46,15 @@ end
 
 module ActiveRecord
   class Base
+
     DoNotWant::RAILS_INSTANCE_METHOD_THAT_SKIP_VALIDATION.each do |method_name|
       do_not_want!(method_name, 'it skips validation')
+    end
+
+    class << self
+      DoNotWant::RAILS_CLASS_METHODS_THAT_SKIP_VALIDATION.each do |method_name|
+        do_not_want!(method_name, 'it skips validation')
+      end
     end
   end
 end
