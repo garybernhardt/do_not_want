@@ -25,7 +25,7 @@ describe 'rails integration' do
   end
 
   it 'allows safe instance methods' do
-    cheese.reload
+    cheese.reload.should == cheese
   end
 
   it 'rejects unsafe class methods' do
