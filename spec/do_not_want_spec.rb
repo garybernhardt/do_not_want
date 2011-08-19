@@ -34,12 +34,12 @@ describe 'do not want' do
     it "ignores calls from gems" do
       walrus.should_receive(:die!)
       expect do
-        kill_walrus(walrus)
+        kill_walrus_from_gem(walrus)
       end.not_to raise_error
     end
 
     it "passes arguments" do
-      kill_walrus(walrus).should == 'killed by kitty because kitty is angry'
+      kill_walrus_from_gem(walrus).should == 'killed by kitty because kitty is angry'
     end
   end
 end
