@@ -17,15 +17,17 @@ end
 describe 'do not want' do
   let(:walrus) { Walrus.new }
 
-  it "raises an error for unwanted method calls" do
-    walrus.should_not_receive(:die!)
-    expect do
-      walrus.be_killed_by!
-    end.to raise_error(DoNotWant::NotSafe)
-  end
+  context "method calls" do
+    it "raises an error for unwanted method calls" do
+      walrus.should_not_receive(:die!)
+      expect do
+        walrus.be_killed_by!
+      end.to raise_error(DoNotWant::NotSafe)
+    end
 
-  it "lets other methods through" do
-    walrus.class.should == Walrus
+    it "lets other methods through" do
+      walrus.class.should == Walrus
+    end
   end
 
   context "caller filtering" do
@@ -39,42 +41,6 @@ describe 'do not want' do
     it "passes arguments" do
       kill_walrus(walrus).should == 'killed by kitty because kitty is angry'
     end
-  end
-end
-
-ActiveRecord::Base.establish_connection(
-  :adapter => "sqlite3",
-  :database => ":memory:")
-
-ActiveRecord::Base.connection.create_table(:cheeses) do |t|
-  t.string :name
-end
-
-class Cheese < ActiveRecord::Base
-end
-
-describe 'rails integration' do
-  let(:cheese) { Cheese.create! }
-  it 'rejects unsafe instance methods' do
-    DoNotWant::RAILS_INSTANCE_METHOD_THAT_SKIP_VALIDATION.each do |method_name|
-      expect do
-        cheese.send method_name
-      end.to raise_error DoNotWant::NotSafe
-    end
-  end
-
-  it 'allows safe instance methods' do
-    cheese.reload
-  end
-
-  it 'rejects unsafe class methods' do
-    DoNotWant::RAILS_CLASS_METHODS_THAT_SKIP_VALIDATION.each do |method_name|
-      expect { Cheese.send method_name }.to raise_error DoNotWant::NotSafe
-    end
-  end
-
-  it 'allows safe class methods' do
-    Cheese.columns.count.should == 2
   end
 end
 
