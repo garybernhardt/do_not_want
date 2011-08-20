@@ -12,14 +12,14 @@ To install:
 Why Do It Do It
 ---------------
 
-In my experience, even experienced Rails developers don't know which of these methods skip validations and callbacks. Quick: which of `decrement`, `decrement!`, and `decrement_counter` skip which? (Hint: they're all different.)
+In my experience, even experienced Rails developers don't know which ActiveRecord methods skip validations and callbacks. Quick: which of `decrement`, `decrement!`, and `decrement_counter` skip which? (Hint: they're all different.)
 
 How Do It Do It
 ---------------
 
 It `define_method`s them away.
 
-But! It also keeps a handle to the original method around and calls to the unsafe methods are allowed from within gems. This keeps Rails from breaking, and allows existing jank to continue being janky while keeping your app as jank-free as possible.
+But! Calls to the unsafe methods are allowed from within gems. This keeps Rails from breaking, and allows existing jank to exist while keeping your app as jank-free as possible.
 
 The disabled instance methods are:
 
