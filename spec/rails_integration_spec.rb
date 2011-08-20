@@ -37,5 +37,17 @@ describe 'rails integration' do
   it 'allows safe class methods' do
     Cheese.columns.count.should == 2
   end
+
+  it 'gives reasons' do
+    expect { cheese.decrement }.to raise_error(
+      DoNotWant::NotSafe,
+      "Cheese#decrement isn't safe because it skips callbacks")
+    expect { cheese.decrement! }.to raise_error(
+      DoNotWant::NotSafe,
+      "Cheese#decrement! isn't safe because it skips validation")
+    expect { Cheese.update_all }.to raise_error(
+      DoNotWant::NotSafe,
+      "Cheese.update_all isn't safe because it skips validation and callbacks")
+  end
 end
 
