@@ -11,11 +11,11 @@ Do Not Want kills those methods dead so you won't cut yourself on them:
     >> User.new.update_attribute(:foo, 5)
     DoNotWant::NotSafe: User#update_attribute isn't safe because it skips validation
 
-## Why Do It Do It
+## Why Do It Do It?
 
 In my experience, even experienced Rails developers don't know which ActiveRecord methods skip validations and callbacks. Quick: which of `decrement`, `decrement!`, and `decrement_counter` skip which? (Hint: they're all different.)
 
-## How Do It Do It
+## How Do It Do It?
 
 It `define_method`s them away.
 
