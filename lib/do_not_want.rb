@@ -1,16 +1,20 @@
 module DoNotWant
-  RAILS_INSTANCE_METHOD_THAT_SKIP_VALIDATION = [
-    :decrement!,
-    :increment!,
-    :toggle!,
-    :update_attribute,
-  ]
-  RAILS_CLASS_METHODS_THAT_SKIP_VALIDATION = [
-    :decrement_counter,
-    :increment_counter,
-    :update_all,
-    :update_counters,
-  ]
+  BAD_INSTANCE_METHODS = {
+    :decrement! => [:validation],
+    :increment! => [:validation],
+    :toggle! => [:validation],
+    :update_attribute => [:validation],
+  }
+  BAD_INSTANCE_METHOD_NAMES = BAD_INSTANCE_METHODS.keys
+
+  BAD_CLASS_METHODS = {
+    :decrement_counter => [:validation],
+    :increment_counter => [:validation],
+    :update_all => [:validation],
+    :update_counters => [:validation],
+  }
+  BAD_CLASS_METHOD_NAMES = BAD_CLASS_METHODS.keys
+
   class NotSafe < Exception
     def initialize(called_class, called_method, reason)
       class_name = called_class.name
@@ -47,12 +51,12 @@ end
 module ActiveRecord
   class Base
 
-    DoNotWant::RAILS_INSTANCE_METHOD_THAT_SKIP_VALIDATION.each do |method_name|
+    DoNotWant::BAD_INSTANCE_METHODS.each do |method_name, reasons|
       do_not_want!(method_name, 'it skips validation')
     end
 
     class << self
-      DoNotWant::RAILS_CLASS_METHODS_THAT_SKIP_VALIDATION.each do |method_name|
+      DoNotWant::BAD_CLASS_METHODS.each do |method_name, reasons|
         do_not_want!(method_name, 'it skips validation')
       end
     end

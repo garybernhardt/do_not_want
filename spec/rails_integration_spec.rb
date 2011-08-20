@@ -17,7 +17,7 @@ describe 'rails integration' do
 
   let(:cheese) { Cheese.create! }
   it 'rejects unsafe instance methods' do
-    DoNotWant::RAILS_INSTANCE_METHOD_THAT_SKIP_VALIDATION.each do |method_name|
+    DoNotWant::BAD_INSTANCE_METHOD_NAMES.each do |method_name|
       expect do
         cheese.send method_name
       end.to raise_error DoNotWant::NotSafe
@@ -29,7 +29,7 @@ describe 'rails integration' do
   end
 
   it 'rejects unsafe class methods' do
-    DoNotWant::RAILS_CLASS_METHODS_THAT_SKIP_VALIDATION.each do |method_name|
+    DoNotWant::BAD_CLASS_METHOD_NAMES.each do |method_name|
       expect { Cheese.send method_name }.to raise_error DoNotWant::NotSafe
     end
   end
