@@ -1,6 +1,6 @@
 # Do Not Want
 
-* http://github.com/garybernhardt/donotwant
+* http://github.com/garybernhardt/do_not_want
 
 ## DESCRIPTION:
 
@@ -10,7 +10,7 @@ Do Not Want kills those methods dead so you won't cut yourself on them.
 
 To install:
 
-    gem install donotwant
+    gem install do_not_want
 
 ## Why Do It Do It
 
