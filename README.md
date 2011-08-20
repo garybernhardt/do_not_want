@@ -4,7 +4,7 @@
 
 ## DESCRIPTION:
 
-Several methods in ActiveRecord skip validations, callbacks, or both. In my extremely humble but also extremely correct opinion, this is a bad idea.
+Several methods in ActiveRecord skip validations, callbacks, or both. In my extremely humble but also extremely correct opinion, it's too easy to accidentally use these.
 
 Do Not Want kills those methods dead so you won't cut yourself on them:
 
