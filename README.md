@@ -1,16 +1,13 @@
 Do Not Want
 -----------
 
-To install:
-
-    gem install donotwant
-
-What It Do
-----------
-
 Several methods in ActiveRecord skip validations, callbacks, or both. In my extremely humble but also extremely correct opinion, this is a bad idea.
 
 Do Not Want kills those methods dead so you won't cut yourself on them.
+
+To install:
+
+    gem install donotwant
 
 Why Do It Do It
 ---------------
