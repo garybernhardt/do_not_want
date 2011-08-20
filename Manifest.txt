@@ -1,0 +1,8 @@
+CHANGELOG.md
+Manifest.txt
+README.md
+Rakefile
+lib/do_not_want.rb
+spec/do_not_want_spec.rb
+spec/gems/fake_gem.rb
+spec/rails_integration_spec.rb
