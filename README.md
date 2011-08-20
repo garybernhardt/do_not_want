@@ -23,23 +23,23 @@ But! Calls to the unsafe methods are allowed from within gems. This keeps Rails 
 
 The disabled instance methods are:
 
-    :decrement
-    :decrement!
-    :increment
-    :increment!
-    :toggle
-    :toggle!
-    :update_attribute
+    decrement
+    decrement!
+    increment
+    ncrement!
+    toggle
+    toggle!
+    update_attribute
 
 The disabled class methods are:
 
-    :decrement_counter
-    :delete
-    :delete_all
-    :find_by_sql
-    :increment_counter
-    :update_all
-    :update_counters
+    decrement_counter
+    delete
+    delete_all
+    find_by_sql
+    increment_counter
+    update_all
+    update_counters
 
 The particular transgressions that these methods make are documented in the source.
 
