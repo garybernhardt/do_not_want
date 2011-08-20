@@ -39,4 +39,3 @@ describe 'rails integration' do
   end
 end
 
-
