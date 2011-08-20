@@ -1,17 +1,23 @@
 module DoNotWant
   BAD_INSTANCE_METHODS = {
+    :decrement => [:callbacks],
     :decrement! => [:validation],
+    :increment => [:callbacks],
     :increment! => [:validation],
+    :toggle => [:callbacks],
     :toggle! => [:validation],
     :update_attribute => [:validation],
   }
   BAD_INSTANCE_METHOD_NAMES = BAD_INSTANCE_METHODS.keys
 
   BAD_CLASS_METHODS = {
-    :decrement_counter => [:validation],
-    :increment_counter => [:validation],
-    :update_all => [:validation],
-    :update_counters => [:validation],
+    :decrement_counter => [:validation, :callbacks],
+    :delete => [:callbacks],
+    :delete_all => [:callbacks],
+    :find_by_sql => [:callbacks],
+    :increment_counter => [:validation, :callbacks],
+    :update_all => [:validation, :callbacks],
+    :update_counters => [:validation, :callbacks],
   }
   BAD_CLASS_METHOD_NAMES = BAD_CLASS_METHODS.keys
 
