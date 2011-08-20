@@ -19,7 +19,7 @@ In my experience, even experienced Rails developers don't know which ActiveRecor
 
 It `define_method`s them away.
 
-But! Calls to the unsafe methods are allowed from within gems. This keeps Rails from breaking, and allows existing jank to exist while keeping your app as jank-free as possible.
+But! Calls to the unsafe methods are allowed from within gems. This keeps Rails from breaking, and allows third-party code to do as it pleases while keeping your app as jank-free as possible.
 
 The disabled instance methods are:
 
