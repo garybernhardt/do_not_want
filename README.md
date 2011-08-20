@@ -1,5 +1,8 @@
-Do Not Want
------------
+# Do Not Want
+
+* http://github.com/garybernhardt/donotwant
+
+## DESCRIPTION:
 
 Several methods in ActiveRecord skip validations, callbacks, or both. In my extremely humble but also extremely correct opinion, this is a bad idea.
 
@@ -9,13 +12,11 @@ To install:
 
     gem install donotwant
 
-Why Do It Do It
----------------
+## Why Do It Do It
 
 In my experience, even experienced Rails developers don't know which ActiveRecord methods skip validations and callbacks. Quick: which of `decrement`, `decrement!`, and `decrement_counter` skip which? (Hint: they're all different.)
 
-How Do It Do It
----------------
+## How Do It Do It
 
 It `define_method`s them away.
 
