@@ -1,4 +1,6 @@
 module DoNotWant
+  # Bad methods and their reasons
+
   BAD_INSTANCE_METHODS = {
     :decrement => ["callbacks"],
     :decrement! => ["validation"],
