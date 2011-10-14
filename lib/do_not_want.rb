@@ -6,6 +6,7 @@ module DoNotWant
   BAD_INSTANCE_METHODS = {
     :decrement => ["callbacks"],
     :decrement! => ["validation"],
+    :delete => ["callbacks"],
     :increment => ["callbacks"],
     :increment! => ["validation"],
     :toggle => ["callbacks"],
