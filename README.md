@@ -26,7 +26,7 @@ The disabled instance methods are:
     decrement
     decrement!
     increment
-    ncrement!
+    increment!
     toggle
     toggle!
     update_attribute
