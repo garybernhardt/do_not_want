@@ -43,5 +43,5 @@ The disabled class methods are:
 
 The particular transgressions that these methods make are documented in the source.
 
-The Rails [ActiveRecord guide](http://guides.rubyonrails.org/active_record_validations_callbacks.html#skipping-validations) contains lists of methods that skip validation and callbacks. That's where this list came from.
+The Rails [ActiveRecord guide](http://guides.rubyonrails.org/active_record_callbacks.html#skipping-callbacks) contains lists of methods that skip validation and callbacks. That's where this list came from.
 
