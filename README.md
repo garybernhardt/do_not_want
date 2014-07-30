@@ -23,13 +23,17 @@ But! Calls to the unsafe methods are allowed from within gems. This keeps Rails 
 
 The disabled instance methods are:
 
+    delete
     decrement
     decrement!
     increment
     increment!
     toggle
     toggle!
+    touch
     update_attribute
+    update_column
+    update_columns
 
 The disabled class methods are:
 
