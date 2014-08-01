@@ -45,3 +45,8 @@ The particular transgressions that these methods make are documented in the sour
 
 The Rails [ActiveRecord guide](http://guides.rubyonrails.org/active_record_callbacks.html#skipping-callbacks) contains lists of methods that skip validation and callbacks. That's where this list came from.
 
+## Should I Use This?
+
+**No!** Tracking the list of unsafe methods in different versions of Rails is too large a task to be worth it. Instead, you should be very careful about which methods you use in production systems.
+
+The Rails team maintains a list of methods that skip callbacks (see "Skipping Callbacks" in the [callback guide](http://guides.rubyonrails.org/active_record_callbacks.html#skipping-callbacks)) and a list of methods that skip validations (see "Skipping Validations" in the [validations guide](http://guides.rubyonrails.org/active_record_validations.html#skipping-validations)). All of these methods should be avoided during normal Rails application development.
