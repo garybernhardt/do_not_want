@@ -11,7 +11,10 @@ module DoNotWant
     :increment! => ["validation"],
     :toggle => ["callbacks"],
     :toggle! => ["validation"],
+    :touch => ["callbacks", "validation"],
     :update_attribute => ["validation"],
+    :update_column => ["callbacks", "validation"],
+    :update_columns => ["callbacks", "validation"]
   }
   BAD_INSTANCE_METHOD_NAMES = BAD_INSTANCE_METHODS.keys
 
